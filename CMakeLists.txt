@@ -988,15 +988,7 @@ if(NOT HAVE_ARMNEON)
   set(SDL_DISABLE_NEON 1)
 endif()
 
-set(SDL_DISABLE_ALLOCA 0)
-check_include_file("alloca.h" "HAVE_ALLOCA_H")
-if(MSVC)
-  check_include_file("malloc.h" "HAVE_MALLOC_H")
-  check_symbol_exists("_alloca" "malloc.h" _ALLOCA_IN_MALLOC_H)
-  if(NOT HAVE_ALLOCA_H AND NOT _ALLOCA_IN_MALLOC_H)
-    set(SDL_DISABLE_ALLOCA 1)
-  endif()
-endif()
+set(SDL_DISABLE_ALLOCA 1)
 
 # TODO: Can't deactivate on FreeBSD? w/o LIBC, SDL_stdinc.h can't define anything.
 if(SDL_LIBC)
